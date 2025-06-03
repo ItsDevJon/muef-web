@@ -1,0 +1,199 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+    font-family: 'Inter', sans-serif !important;
+} */
+
+:root{
+    --bulma-primary-h: 182deg;
+    --bulma-primary-s: 100%;
+    --bulma-primary-l: 20%;
+    --bulma-primary-invert-l: var(--bulma-text-100-l);
+    --bulma-primary-light-l: var(--bulma-primary-95-l);
+}
+
+body{
+    min-height: 100vh;
+	background-color: white;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+   -webkit-appearance: none;
+   -moz-appearance: textfield;
+   margin: 0;
+}
+
+.gap-1{ gap: 0.25rem }
+.gap-2{ gap: 0.5rem }
+.gap-3{ gap: 0.75rem }
+.gap-4{ gap: 1rem }
+.gap-5{ gap: 1.25rem }
+.gap-6{ gap: 1.5rem }
+.gap-7{ gap: 1.75rem }
+.gap-8{ gap: 2rem }
+
+.button.is-small{
+	--bulma-control-size: .875rem;
+	--bulma-control-line-height: 20px;
+}
+
+.button div.icon-text{
+	--bulma-icon-dimensions: 1.25rem;
+	align-items: center;
+}
+
+.table.is-transparent {
+	--bulma-table-background-color: transparent;
+}
+
+.table.is-borderless {
+	border: none;
+}
+
+.table.is-borderless th,
+.table.is-borderless td {
+	border: none;
+}
+
+#invoicesTable.table td {
+	--bulma-table-cell-padding: 1rem 1.5rem;
+	font-size: .875rem;
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+#invoicesTable.table td div.icon-text{
+	--bulma-icon-text-spacing: .5em;
+}
+
+#invoicesTable.table tbody tr:last-child td{
+	border-bottom-width: 1px;
+}
+
+#invoicesTable.table tr td:nth-child(2) > div{
+	margin-left: -.5rem;
+}
+
+#invoicesTable.table th {
+	--bulma-table-cell-padding: .75rem 1.5rem;
+	--bulma-table-head-cell-border-width: 0 0 1px;
+}
+
+#invoicesTablePagination.pagination{
+	--bulma-pagination-item-font-size: .875rem;
+}
+
+#invoicesTablePagination.pagination .pagination-link.is-current{
+	--bulma-pagination-item-h: var(--bulma-primary-h);
+	--bulma-pagination-item-s: var(--bulma-primary-s);
+	--bulma-pagination-item-l: var(--bulma-primary-l);
+	--bulma-pagination-item-background-l: var(--bulma-primary-l);
+	--bulma-pagination-item-background-l-delta: 0%;
+	--bulma-pagination-item-border-l: var(--bulma-primary-l);
+}
+
+.tabs.is-vertical ul {
+	max-height: 368px;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	/* -webkit-box-shadow: inset 0px -5px 5px 0px rgba(0,0,0,0.05);
+	-moz-box-shadow: inset 0px -5px 5px 0px rgba(0,0,0,0.05);
+	box-shadow: inset 0px -5px 5px 0px rgba(0,0,0,0.05); */
+}
+
+.tabs.is-vertical.is-fullwidth ul li {
+	width: 100%;
+}
+
+.tabs.is-vertical.is-toggle li a{
+	border: 0;
+	border-radius: var(--bulma-radius-small);
+}
+
+.tabs.is-vertical.is-toggle li.is-active a{
+	--bulma-background-l: var(--bulma-primary-light-l);
+    --bulma-background-l-delta: 0%;
+	--bulma-color-l: var(--bulma-primary-l);
+    --bulma-color-l-delta: 0%;
+
+    background-color: hsl(
+		var(--bulma-primary-h), 
+		var(--bulma-primary-s), 
+		calc(
+			var(--bulma-background-l) + var(--bulma-background-l-delta)
+		)
+	);
+
+    color: hsl(
+		var(--bulma-primary-h), 
+		var(--bulma-primary-s), 
+		calc(
+			var(--bulma-color-l) + var(--bulma-color-l-delta)
+		)
+	);
+}
+
+.badge{
+	padding: .125rem .5rem;
+	font-size: .75rem;
+	font-weight: 600;
+	line-height: 18px;
+	color: #344054;
+	background-color: #F9FAFB;
+	border: 1px solid #E4E7EC;
+	border-radius: 16px;
+}
+
+.card.metric {
+	border: 1px solid #E3E7EB;
+	box-shadow: 0px 1px 2px 0px rgba(16, 24, 40, 5%);
+}
+
+.card.metric .card-content{
+	--bulma-card-content-padding: 1.25rem 1rem;
+}
+
+#invoice-form {
+	--bulma-border: hsl(var(--bulma-scheme-h), var(--bulma-scheme-s), var(--bulma-border-l));
+	border: 1px solid var(--bulma-border);
+    border-radius: var(--bulma-radius-large);
+}
+
+#invoice-form > .columns{
+	margin-bottom: calc( var(--bulma-size-normal) * 1.25 )
+}
+
+#invoice-form label {
+	font-weight: bold;
+}
+
+#invoices-modal.modal {
+    --bulma-modal-content-width: auto;
+    --bulma-modal-card-body-background-color: #525659;
+}
+
+#invoices-modal.modal.is-active{
+    padding: 3rem 5rem;
+}
+
+/* .overflow-auto{
+    overflow: auto;
+} */
+
+/* #newInvoiceForm{
+    border: 1px solid hsl(0, 0%, 86%);
+    border-radius: 16px;
+} */
+
+/* .grid-cols{
+    display: grid;
+    column-gap: .5rem;
+    align-items: center;
+    grid-template-columns: minmax(206px, 2fr) minmax(100px, 1fr) minmax(40px, .375fr) minmax(100px, 1fr) 24px;
+}
+
+.grid-cols > .field:not(:last-child){
+    margin-bottom: 0;
+} */

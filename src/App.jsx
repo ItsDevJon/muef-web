@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from 'react-router-dom'
+import { Navigation } from './components/Navigation'
+import { Search } from './pages/Search'
+import { MyOffers } from './pages/MyOffers'
+import { Chat } from './pages/Chat'
+
+import 'bulma/css/bulma.min.css';
+import './main.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <>
+            <Routes>
+                <Route path='/' element={<Navigation />}>
+                    <Route path='bilatzailea' element={<Search />} />
+                    <Route path='nire-iragarkiak' element={<MyOffers />} />
+                    <Route path='txat' element={<Chat />} />
+                </Route>
+            </Routes>
+        </>
+    )
 }
 
 export default App
