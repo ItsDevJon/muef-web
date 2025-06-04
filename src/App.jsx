@@ -1,23 +1,25 @@
 import { Routes, Route } from 'react-router-dom'
-import { Navigation } from './components/Navigation'
-import { Search } from './pages/Search'
 import { MyOffers } from './pages/MyOffers'
 import { Chat } from './pages/Chat'
+import HomePage from './pages/HomePage'
+import Layout from './components/Layout'
+import { SearchProvider } from './context/SearchContext'
 
-import 'bulma/css/bulma.min.css';
-import './main.css'
+import './index.css'
 
 function App() {
     return (
-        <>
+        <SearchProvider>
             <Routes>
-                <Route path='/' element={<Navigation />}>
-                    <Route path='bilatzailea' element={<Search />} />
-                    <Route path='nire-iragarkiak' element={<MyOffers />} />
-                    <Route path='txat' element={<Chat />} />
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<HomePage />} />
+                    <Route path="bilatzailea" element={<HomePage />} />
+                    <Route path="nire-iragarkiak" element={<MyOffers />} />
+                    <Route path="txat" element={<Chat />} />
+                    <Route path="*" element={<HomePage />} />
                 </Route>
             </Routes>
-        </>
+        </SearchProvider>
     )
 }
 
