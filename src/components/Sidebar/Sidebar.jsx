@@ -8,7 +8,7 @@ const Sidebar = () => {
         <aside className="lg:w-1/3 space-y-8">
             <SubscribeBox />
             <RelatedSearches />
-            <RecentlyViewed />
+            {/* <RecentlyViewed /> */}
         </aside>
     );
 }

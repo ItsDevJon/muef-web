@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 const Layout = () => {
     return (
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col gap-9">
             <Navbar />
             <Outlet />
         </div>

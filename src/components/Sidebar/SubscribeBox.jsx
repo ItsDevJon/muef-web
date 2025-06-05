@@ -11,7 +11,7 @@ const SubscribeBox = () => {
                 Turn on this property alert so you don't miss out on new listings that fit your needs.
             </p>
             <input
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg mb-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                className="w-full bg-white px-4 py-2 border border-gray-300 rounded-lg mb-3 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 placeholder="enter email"
                 type="email"
             />

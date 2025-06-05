@@ -4,7 +4,7 @@ import FilterCone from '../assets/filter-cone.svg?react';
 
 const Navbar = () => {
     return (
-        <nav className="container mx-auto mb-12 py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <nav className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div className="flex items-center space-x-4 gap-2">
                 <div className="flex items-center space-x-2">
                     {/*<span className="material-icons text-indigo-600">place</span>*/}
