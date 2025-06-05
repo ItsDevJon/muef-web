@@ -1,11 +1,10 @@
 [
     {
         "title": "Spacious 3-Bedroom Apartment in Deusto",
-        "image": "https://example.com/image1.jpg",
+        "image": "/images/house-1.jpg",
         "alt": "Modern apartment with balcony",
         "meta": "€1200/month · 3 Beds · 2 Baths · 110 m²",
         "description": "Perfect for students, near University of Deusto. Fully furnished with modern amenities and a sunny balcony.",
-        "rating": "4.5 (23 reviews)",
         "location": "Bilbao, Biscay",
         "tags": [
             {
@@ -26,11 +25,10 @@
     },
     {
         "title": "Charming Studio in Casco Viejo",
-        "image": "https://example.com/image2.jpg",
+        "image": "/images/house-2.jpg",
         "alt": "Cozy studio in Old Town",
         "meta": "€750/month · Studio · 1 Bath · 45 m²",
         "description": "Ideal for a single person or young couple. Recently renovated, located in the heart of the historic Old Town.",
-        "rating": "4.8 (15 reviews)",
         "location": "Donostia-San Sebastián, Gipuzkoa",
         "tags": [
             {

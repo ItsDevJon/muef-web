@@ -21,9 +21,6 @@ const PropertyCard = ({ property }) => {
                     <p className="text-sm text-gray-500 mb-1">{property.meta}</p>
                     <p className="text-gray-700 text-sm mb-3">{property.description}</p>
                     <div className="flex items-center text-sm text-gray-500 mb-3">
-                        <span className="material-icons icon-sm mr-1 text-yellow-500">star</span>
-                        <span>{property.rating}</span>
-                        <span className="mx-2">·</span>
                         <span className="material-icons icon-sm mr-1">location_on</span>
                         <span>{property.location}</span>
                     </div>
