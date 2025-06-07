@@ -5,7 +5,7 @@ const PropertyNearbyMap = ({ locationName, nearbyPlaces }) => {
         <section className="mt-6">
             <h2 className="text-2xl font-medium mb-6">{locationName}</h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-[30%_70%] gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_2fr] gap-6">
                 {/* Nearby places */}
                 <div className="border border-gray-300 rounded-xl py-1 px-6 divide-y-1 divide-gray-200">
                     {nearbyPlaces.map((place, i) => (
@@ -23,7 +23,7 @@ const PropertyNearbyMap = ({ locationName, nearbyPlaces }) => {
 
                 {/* Map */}
                 <div className="max-h-[412px] rounded-xl overflow-hidden">
-                    <img src="/images/map.png" alt="Map" className="w-full h-full object-cover" />
+                    <img src="/images/map.png" alt="Map" className="h-full object-cover" />
                 </div>
             </div>
         </section>

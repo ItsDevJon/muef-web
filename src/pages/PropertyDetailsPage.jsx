@@ -61,7 +61,7 @@ const PropertyDetailsPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-7">
             <PropertyGallery images={property.gallery} />
             <PropertySummary property={property} />
-            <hr className="border border-gray-100 mt-6" />
+            <hr className="border-gray-200 mt-6" />
             <PropertyNearbyMap locationName={property.location} nearbyPlaces={property.nearby} />
         </div>
     );
