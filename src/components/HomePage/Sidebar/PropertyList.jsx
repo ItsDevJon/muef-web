@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import PropertyCard from "./PropertyCard";
-import { useSearch } from "../context/SearchContext";
+import PropertyCard from "../../PropertyCard.jsx";
+import { useSearch } from "../../../context/SearchContext.jsx";
 
 const PropertyList = () => {
 

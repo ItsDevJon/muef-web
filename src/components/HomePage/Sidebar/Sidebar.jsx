@@ -1,7 +1,7 @@
 import React from 'react';
-import SubscribeBox from './SubscribeBox';
-import RelatedSearches from './RelatedSearches';
-import RecentlyViewed from './RecentlyViewed';
+import SubscribeBox from './SubscribeBox.jsx';
+import RelatedSearches from './RelatedSearches.jsx';
+import RecentlyViewed from './RecentlyViewed.jsx';
 
 const Sidebar = () => {
     return (

@@ -1,8 +1,16 @@
-import React from "react";
-import { useSearch } from "../context/SearchContext";
+import { useState } from "react";
+import { useSearch } from "../../../context/SearchContext.jsx";
+import FiltersModal from "../FiltersModal.jsx";
 
 const SearchBar = () => {
     const { searchQuery, setSearchQuery, locationQuery, setLocationQuery } = useSearch();
+    const [showFilters, setShowFilters] = useState(false);
+
+    const applyFilters = (filters) => {
+        // Here you would typically apply the filters to your search results
+        console.log("Filters applied:", filters);
+        setShowFilters(false); // Close the modal after applying filters
+    }
 
     return (
         <div className="bg-white py-6 search-bar-shadow -mt-13 rounded-lg container mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
@@ -15,8 +23,8 @@ const SearchBar = () => {
                         type="text"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Search by keyword (e.g., '2 bedrooms', 'near university')"
+                        className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                     />
                 </div>
                 <div className="relative flex-grow w-full md:w-auto">
@@ -27,13 +35,17 @@ const SearchBar = () => {
                         type="text"
                         value={locationQuery}
                         onChange={(e) => setLocationQuery(e.target.value)}
+                        placeholder="Kokapena (e.g., 'Bilbo', 'Donosti')"
                         className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Location (e.g., 'Bilbao', 'Donostia')"
                     />
                 </div>
-                <button className="flex items-center justify-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 w-full md:w-auto">
+                <button 
+                    onClick={() => setShowFilters(true)}
+                    className="flex items-center justify-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 w-full md:w-auto"
+                >
                     <span className="material-icons mr-2 icon-sm">filter_list</span> Filters
                 </button>
+                {showFilters && <FiltersModal onApply={applyFilters} />}
                 <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-lg w-full md:w-auto">
                     Search
                 </button>

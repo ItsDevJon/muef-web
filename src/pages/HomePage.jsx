@@ -1,9 +1,9 @@
-import Footer from '../components/Footer';
-import HeroHeader from '../components/HeroHeader';
-import Pagination from '../components/Pagination';
-import PropertyList from '../components/PropertyList';
-import SearchBar from '../components/SearchBar';
-import Sidebar from '../components/Sidebar/Sidebar';
+import Footer from '../components/HomePage/Footer.jsx';
+import HeroHeader from '../components/HomePage/Sidebar/HeroHeader.jsx';
+import Pagination from '../components/HomePage/Sidebar/Pagination.jsx';
+import PropertyList from '../components/HomePage/Sidebar/PropertyList.jsx';
+import SearchBar from '../components/HomePage/Sidebar/SearchBar.jsx';
+import Sidebar from '../components/HomePage/Sidebar/Sidebar';
 
 const HomePage = () => {
     return (
