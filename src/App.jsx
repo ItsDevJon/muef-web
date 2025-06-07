@@ -6,6 +6,7 @@ import Layout from './components/Layout'
 import { SearchProvider } from './context/SearchContext'
 
 import './index.css'
+import PropertyDetailsPage from './pages/PropertyDetailsPage'
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
                     <Route path="bilatzailea" element={<HomePage />} />
+                    <Route path='property' element={<PropertyDetailsPage />} />
                     <Route path="nire-iragarkiak" element={<MyOffers />} />
                     <Route path="txat" element={<Chat />} />
                     <Route path="*" element={<HomePage />} />
