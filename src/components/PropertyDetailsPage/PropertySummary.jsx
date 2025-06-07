@@ -52,9 +52,9 @@ const PropertySummary = ({ property }) => {
 
             {/* Right: Sidebar card */}
             <div className="flex flex-col border border-gray-300 rounded-xl p-6 space-y-6 divide-y-1 divide-gray-200">
-                <div>
-                    <p className="text-base text-gray-500 mb-1">Buy with the price</p>
-                    <p className="text-[2rem] font-medium">{price} €</p>
+                <div className="pb-6">
+                    <p className="text-base text-gray-500 mb-2">Buy with the price</p>
+                    <p className="text-[2rem] leading-none font-medium">{price} €</p>
                 </div>
 
                 {owner && (
