@@ -1,46 +1,150 @@
 [
     {
-        "title": "Spacious 3-Bedroom Apartment in Deusto",
-        "image": "/images/house-1.jpg",
-        "alt": "Modern apartment with balcony",
-        "meta": "€1200/month · 3 Beds · 2 Baths · 110 m²",
-        "description": "Perfect for students, near University of Deusto. Fully furnished with modern amenities and a sunny balcony.",
-        "location": "Bilbao, Biscay",
+        "title": "Deustuko 3 Logelako Apartamentu Zabal bat",
+        "image": "/images/house-01.jpg",
+        "alt": "Balkoidun apartamentu modernoa",
+        "price": "470.000 €",
+        "meta": "3 Logela · 2 Bainugela · 110 m²",
+        "description": "Ikasleentzat aproposa, Deustuko Unibertsitate ondoan. Erabat hornitua, ekipamendu modernoekin eta eguzkitsua den balkoiarekin.",
+        "location": "Bilbo, Bizkaia",
         "tags": [
             {
-                "label": "Furnished",
+                "label": "Hornitua",
                 "class": "bg-indigo-100 text-indigo-700"
             },
             {
-                "label": "Pet Friendly",
-                "class": "bg-green-100 text-green-700"
-            },
-            {
-                "label": "Elevator",
+                "label": "Igogailua",
                 "class": "bg-purple-100 text-purple-700"
             }
         ],
-        "listed": "Listed 2 days ago",
+        "listed": "Duela 2 egun zerrendatua",
         "bookmarked": false
     },
     {
-        "title": "Charming Studio in Casco Viejo",
-        "image": "/images/house-2.jpg",
-        "alt": "Cozy studio in Old Town",
-        "meta": "€750/month · Studio · 1 Bath · 45 m²",
-        "description": "Ideal for a single person or young couple. Recently renovated, located in the heart of the historic Old Town.",
-        "location": "Donostia-San Sebastián, Gipuzkoa",
+        "title": "Estudio Xarmagarria Alde Zaharrean",
+        "image": "/images/house-02.jpg",
+        "alt": "Alde Zaharreko estudio goxoa",
+        "price": "189.000 €",
+        "meta": "2 Logela · 2 Bainugela · 45 m²",
+        "description": "Pertsona bakar edo bikote gazte baterako aproposa. Berriki berritua, Alde Zaharreko bihotzean kokatua.",
+        "location": "Donostia, Gipuzkoa",
         "tags": [
             {
-                "label": "Renovated",
+                "label": "Berritua",
                 "class": "bg-indigo-100 text-indigo-700"
-            },
-            {
-                "label": "Central Location",
-                "class": "bg-blue-100 text-blue-700"
             }
         ],
-        "listed": "Listed 5 days ago",
+        "listed": "Duela 5 egun zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Zurbarango Etxe Adimentsua",
+        "image": "/images/house-03.jpg",
+        "alt": "Teknologia berriz hornitutako etxea",
+        "price": "395.000 €",
+        "meta": "3 Logela · 2 Bainugela · 95 m²",
+        "description": "Etxe adimentsua, argiztapen eta berokuntza automatizatuekin. Aparkaleku pribatua eta terraza.",
+        "location": "Bilbo, Bizkaia",
+        "listed": "Duela 1 aste zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Gasteizko Etxebizitza Familiarra",
+        "image": "/images/house-04.jpg",
+        "alt": "Lorategidun etxebizitza handia",
+        "price": "510.000 €",
+        "meta": "4 Logela · 3 Bainugela · 140 m²",
+        "description": "Familia handi baterako aproposa. Lorategia, sukalde modernoa eta egongela zabala.",
+        "location": "Gasteiz, Araba",
+        "listed": "Duela 3 egun zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Iruneko Atiko Berritua",
+        "image": "/images/house-05.jpg",
+        "alt": "Eguzkipeko atikoa terraza ikusgarriarekin",
+        "price": "320.000 €",
+        "meta": "2 Logela · 1 Bainugela · 80 m²",
+        "description": "Atiko argitsua, terraza panoramikoarekin eta itsasorako ikuspegiekin. Berritua eta hornitua.",
+        "location": "Iruñea, Nafarroa",
+        "listed": "Duela 4 egun zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Barakaldoko Pisua Ikasleentzat",
+        "image": "/images/house-06.jpg",
+        "alt": "Pisua gela banatu eta hornituekin",
+        "price": "275.000 €",
+        "meta": "3 Logela · 1 Bainugela · 85 m²",
+        "description": "Ikasleentzat egokia, metro geltokiaren ondoan. Internet barne eta komun partekatua.",
+        "location": "Barakaldo, Bizkaia",
+        "listed": "Duela 6 egun zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Baserri Berritua Urdaibain",
+        "image": "/images/house-07.jpg",
+        "alt": "Landazabaleko baserri berritua",
+        "price": "680.000 €",
+        "meta": "5 Logela · 3 Bainugela · 200 m²",
+        "description": "Natura eremuan kokatua, lasaitasunez gozatzeko aukera paregabea. Baserri estiloa eta egurrezko akaberak.",
+        "location": "Urdaibai, Bizkaia",
+        "listed": "Duela aste 1 zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Estudio Goxoa Zarautzen",
+        "image": "/images/house-08.jpg",
+        "alt": "Itsasertzeko estudio txikia",
+        "price": "210.000 €",
+        "meta": "1 Logela · 1 Bainugela · 40 m²",
+        "description": "Bakarkako bizitzarako egokia, hondartzatik minutu gutxira. Balkoi txikia eta sukalde txikia barne.",
+        "location": "Zarautz, Gipuzkoa",
+        "listed": "Duela 3 egun zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Duplex Zentrala Bilbon",
+        "image": "/images/house-09.jpg",
+        "alt": "Bi solairutako apartamentua Bilboko erdigunean",
+        "price": "590.000 €",
+        "meta": "3 Logela · 2 Bainugela · 130 m²",
+        "description": "Erdigunean kokatua, diseinu modernoa eta goiko solairuan sukaldea eta egongela dituena.",
+        "location": "Bilbo, Bizkaia",
+        "listed": "Duela 2 egun zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Ordiziako Etxe Merkea",
+        "image": "/images/house-10.jpg",
+        "alt": "Etxe sinplea prezio onean",
+        "price": "155.000 €",
+        "meta": "2 Logela · 1 Bainugela · 60 m²",
+        "description": "Hasiberrientzako aukera bikaina. Eguzkitsua eta hornitua, ingurune lasaian.",
+        "location": "Ordizia, Gipuzkoa",
+        "listed": "Duela 7 egun zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Etxe Paregabea Hondarribian",
+        "image": "/images/house-11.jpg",
+        "alt": "Estilo kolonialeko etxea",
+        "price": "790.000 €",
+        "meta": "4 Logela · 3 Bainugela · 160 m²",
+        "description": "Estilo berezia eta kokapen ikusgarria duen etxea. Itsasora begira eta giro epela.",
+        "location": "Hondarribia, Gipuzkoa",
+        "listed": "Duela 1 aste zerrendatua",
+        "bookmarked": false
+    },
+    {
+        "title": "Bergarako Apartamentu Eraberritua",
+        "image": "/images/house-12.jpg",
+        "alt": "Apartamentu txukuna Bergaran",
+        "price": "245.000 €",
+        "meta": "2 Logela · 1 Bainugela · 70 m²",
+        "description": "Erdigunean, merkataritza guneen ondoan. Oso egoera onean, prest bizitzeko.",
+        "location": "Bergara, Gipuzkoa",
+        "listed": "Duela 2 egun zerrendatua",
         "bookmarked": false
     }
 ]
