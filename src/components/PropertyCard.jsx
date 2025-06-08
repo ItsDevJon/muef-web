@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {Bed, Bath, Expand, Bookmark, BookmarkCheck} from "lucide-react";
 
 const PropertyCard = ({ property }) => {
 
@@ -9,49 +10,55 @@ const PropertyCard = ({ property }) => {
     }
     
     return (
-        <div className="bg-white p-6 rounded-lg card-shadow hover:shadow-lg transition-shadow duration-300">
-            <div className="flex flex-col sm:flex-row gap-6">
+        <div className="cursor-pointer rounded-2xl space-y-3 bg-white">
+            {/* Image */}
+            <div className="relative group">
                 <img
-                    alt={property.alt}
-                    className="w-full sm:w-48 h-40 object-cover rounded-lg"
-                    src={property.image}
+                    src={property.gallery[0]}
+                    alt="Property"
+                    className="w-full h-65 object-cover rounded-xl"
                 />
-                <div className="flex-grow">
-                    <div className="flex justify-between items-start">
-                        <h3 className="text-lg font-semibold text-indigo-700 hover:underline">
-                            {property.title}
-                        </h3>
-                        <button 
-                            onClick={toggleBookmark}
-                            aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
-                            className="cursor-pointer text-gray-400 hover:text-red-500"
-                        >
-                            <span className="material-icons icon-sm">{bookmarked ? 'bookmark' : 'bookmark_border'}</span>
-                        </button>
-                    </div>
-                    <p className="text-2xl font-bold mb-2">{property.price}</p>
-                    <p className="text-sm text-gray-500 mb-2">{property.meta}</p>
-                    <p className="text-gray-700 text-sm mb-3">{property.description}</p>
-                    <div className="flex items-center text-sm text-gray-500 mb-3">
-                        <span className="material-icons icon-sm mr-1">location_on</span>
-                        <span>{property.location}</span>
-                    </div>
-                    {/* <div className="flex flex-wrap gap-2 mb-3">
-                        {property.tags.map((tag, index) => (
-                            <span
-                                key={index}
-                                className={`px-2 py-1 text-xs font-medium rounded-full ${tag.class}`}
-                            >
-                                {tag.label}
-                            </span>
-                        ))}
-                    </div> */}
-                    <div className="flex justify-between items-center">
-                        <p className="text-xs text-gray-400">{property.listed}</p>
-                        <button className="cursor-pointer bg-indigo-500 hover:bg-indigo-600 text-white text-sm px-4 py-2 rounded-lg">
-                            Contact Owner
-                        </button>
-                    </div>
+                <button
+                    onClick={toggleBookmark}
+                    aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
+                    className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/50 p-2 rounded-full shadow hover:bg-black/70"
+                >
+                    {
+                        bookmarked ?
+                        <BookmarkCheck className="w-5 h-5 text-white" /> :
+                        <Bookmark className="w-5 h-5 text-white" />
+                    }
+                </button>
+            </div>
+
+            {/* Price */}
+            <div className="text-[1.75rem] font-semibold">
+                {property.price} <span hidden className="text-sm font-normal text-gray-500">/ mes</span>
+            </div>
+
+            {/* Location */}
+            <div className="flex flex-col gap-1">
+                <h4 className="text-xl font-medium">
+                    {property.location}
+                </h4>
+                <span className="text-base text-[#6E6E6E] font-light">7 min oinez Deustuko Unibertsitatera</span>
+            </div>
+
+            {/* Features */}
+            <div className="flex items-center gap-4 text-sm text-gray-700 pt-2">
+                <div className="flex items-center gap-3">
+                    <Bed className="w-5 h-5" />
+                    <span>{property.rooms} LOGELA</span>
+                </div>
+                <span className="text-gray-400 font-black">·</span>
+                <div className="flex items-center gap-3">
+                    <Bath className="w-5 h-5" />
+                    <span>{property.bathrooms} BAINUGELA</span>
+                </div>
+                <span className="text-gray-400 font-black">·</span>
+                <div className="flex items-center gap-3">
+                    <Expand className="w-5 h-5" />
+                    <span>{property.size} m²</span>
                 </div>
             </div>
         </div>

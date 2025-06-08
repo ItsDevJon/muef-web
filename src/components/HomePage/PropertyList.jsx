@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import PropertyCard from "../../PropertyCard.jsx";
-import { useSearch } from "../../../context/SearchContext.jsx";
+import PropertyCard from "../PropertyCard.jsx";
+import { useSearch } from "../../context/SearchContext.jsx";
 
 const PropertyList = () => {
 
@@ -38,9 +38,9 @@ const PropertyList = () => {
         });
 
     return (
-        <div className="space-y-6">
-            <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-semibold text-gray-800">{filtered.length} properties found</h2>
+        <div className="space-y-11">
+            <div className="flex justify-between items-center">
+                <h2 className="text-2xl font-medium text-gray-800">{filtered.length} properties found</h2>
                 <div className="relative">
                     <select
                         value={sortBy}
@@ -54,9 +54,14 @@ const PropertyList = () => {
                     <span className="material-icons absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
                 </div>
             </div>
-            {filtered.map((p, i) => (
-                <PropertyCard key={i} property={p} />
-            ))}
+            <div
+                className="grid gap-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(426px, 1fr))' }}
+            >
+                {filtered.map((p, i) => (
+                    <PropertyCard key={i} property={p} />
+                ))}
+            </div>
         </div>
     );
 }

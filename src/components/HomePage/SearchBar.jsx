@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useSearch } from "../../../context/SearchContext.jsx";
-import FiltersModal from "../FiltersModal.jsx";
+import { useSearch } from "../../context/SearchContext.jsx";
+import FiltersModal from "./FiltersModal.jsx";
 
 const SearchBar = () => {
     const { searchQuery, setSearchQuery, locationQuery, setLocationQuery } = useSearch();
@@ -39,9 +39,33 @@ const SearchBar = () => {
                         className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                     />
                 </div>
+                <div className="relative flex-grow w-full md:w-auto">
+                    <span className="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm">
+                        location_on
+                    </span>
+                    <input
+                        type="text"
+                        value={locationQuery}
+                        onChange={(e) => setLocationQuery(e.target.value)}
+                        placeholder="Kokapena (e.g., 'Bilbo', 'Donosti')"
+                        className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                </div>
+                <div className="relative flex-grow w-full md:w-auto">
+                    <span className="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm">
+                        location_on
+                    </span>
+                    <input
+                        type="text"
+                        value={locationQuery}
+                        onChange={(e) => setLocationQuery(e.target.value)}
+                        placeholder="Kokapena (e.g., 'Bilbo', 'Donosti')"
+                        className="pl-10 pr-4 py-3 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    />
+                </div>
                 <button 
                     onClick={() => setShowFilters(true)}
-                    className="flex items-center justify-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 w-full md:w-auto"
+                    className="hidden flex items-center justify-center px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-100 w-full md:w-auto"
                 >
                     <span className="material-icons mr-2 icon-sm">filter_list</span> Filters
                 </button>
