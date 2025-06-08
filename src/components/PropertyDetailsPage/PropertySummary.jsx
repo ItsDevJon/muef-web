@@ -1,4 +1,5 @@
 import React from 'react';
+import {Bath, Bed, Car, Expand} from "lucide-react";
 
 const PropertySummary = ({ property }) => {
     const {
@@ -21,25 +22,25 @@ const PropertySummary = ({ property }) => {
                 <div className="flex flex-wrap gap-6 text-sm text-gray-700 mb-6">
                     {rooms !== undefined && (
                         <div className="flex items-center gap-2">
-                            <span className="material-icons text-gray-500 text-base">bed</span>
+                            <Bed className="text-gray-500 text-base" />
                             {rooms} Logela
                         </div>
                     )}
                     {bathrooms !== undefined && (
                         <div className="flex items-center gap-2">
-                            <span className="material-icons text-gray-500 text-base">bathtub</span>
+                            <Bath className="text-gray-500 text-base" />
                             {bathrooms} Bainugela
                         </div>
                     )}
                     {area && (
                         <div className="flex items-center gap-2">
-                            <span className="material-icons text-gray-500 text-base">zoom_out_map</span>
+                            <Expand className="text-gray-500 text-base" />
                             {area}m²
                         </div>
                     )}
                     {hasGarage && (
                         <div className="flex items-center gap-2">
-                            <span className="material-icons text-gray-500 text-base">garage</span>
+                            <Car className="text-gray-500 text-base" />
                             Garajea
                         </div>
                     )}

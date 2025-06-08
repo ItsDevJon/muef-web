@@ -1,6 +1,7 @@
 import { useState } from "react";
 import FiltersModal from "./FiltersModal.jsx";
 import {useProperties} from "../../context/PropertyContext.jsx";
+import {MapPin, Search} from "lucide-react";
 
 const SearchBar = () => {
     const { searchQuery, setSearchQuery, locationQuery, setLocationQuery } = useProperties();
@@ -16,9 +17,7 @@ const SearchBar = () => {
         <div className="bg-white py-6 search-bar-shadow -mt-13 rounded-lg container mx-auto px-4 sm:px-6 lg:px-8 z-10 relative">
             <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-4">
                 <div className="relative flex-grow w-full md:w-auto">
-                    <span className="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm">
-                        search
-                    </span>
+                    <Search className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm" />
                     <input
                         type="text"
                         value={searchQuery}
@@ -28,9 +27,7 @@ const SearchBar = () => {
                     />
                 </div>
                 <div className="relative flex-grow w-full md:w-auto">
-                    <span className="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm">
-                        location_on
-                    </span>
+                    <MapPin className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm" />
                     <input
                         type="text"
                         value={locationQuery}
@@ -40,9 +37,7 @@ const SearchBar = () => {
                     />
                 </div>
                 <div className="relative flex-grow w-full md:w-auto">
-                    <span className="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm">
-                        location_on
-                    </span>
+                    <MapPin className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm" />
                     <input
                         type="text"
                         value={locationQuery}
@@ -52,9 +47,7 @@ const SearchBar = () => {
                     />
                 </div>
                 <div className="relative flex-grow w-full md:w-auto">
-                    <span className="material-icons absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm">
-                        location_on
-                    </span>
+                    <MapPin className="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 icon-sm" />
                     <input
                         type="text"
                         value={locationQuery}
