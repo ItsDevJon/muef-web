@@ -33,7 +33,7 @@ const PropertyCard = ({ property }) => {
 
             {/* Price */}
             <div className="text-[1.75rem] font-semibold">
-                {property.price} <span hidden className="text-sm font-normal text-gray-500">/ mes</span>
+                {property.price.toLocaleString()} €<span hidden className="text-sm font-normal text-gray-500">/ mes</span>
             </div>
 
             {/* Location */}
@@ -58,7 +58,7 @@ const PropertyCard = ({ property }) => {
                 <span className="text-gray-400 font-black">·</span>
                 <div className="flex items-center gap-3">
                     <Expand className="w-5 h-5" />
-                    <span>{property.size} m²</span>
+                    <span>{property.area} m²</span>
                 </div>
             </div>
         </div>

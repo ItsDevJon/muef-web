@@ -54,14 +54,14 @@ const PropertySummary = ({ property }) => {
             <div className="flex flex-col border border-gray-300 rounded-xl p-6 space-y-6 divide-y-1 divide-gray-200">
                 <div className="pb-6">
                     <p className="text-base text-gray-500 mb-2">Buy with the price</p>
-                    <p className="text-[2rem] leading-none font-medium">{price} €</p>
+                    <p className="text-[2rem] leading-none font-medium">{price.toLocaleString()} €</p>
                 </div>
 
                 {owner && (
                     <div>
                         <div className="flex items-center gap-3 mb-6 border border-gray-300 p-4 rounded-lg">
                             <img
-                                src={owner.image}
+                                src={owner.avatar}
                                 alt={owner.name}
                                 className="w-10 h-10 rounded-full object-cover"
                             />
