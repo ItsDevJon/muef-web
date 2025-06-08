@@ -1,4 +1,5 @@
 import React from 'react';
+import {Airplay} from "lucide-react";
 
 const Footer = () => {
     return (
@@ -24,9 +25,15 @@ const Footer = () => {
                     <div>
                         <h4 className="text-lg font-semibold text-white mb-3">Connect With Us</h4>
                         <div className="flex space-x-4">
-                            <a className="text-gray-400 hover:text-white" href="#"><span className="material-icons">facebook</span></a>
-                            <a className="text-gray-400 hover:text-white" href="#"><img alt="X" className="w-6 h-6" src="https://example.com/x-logo.svg" /></a>
-                            <a className="text-gray-400 hover:text-white" href="#"><img alt="Instagram" className="w-6 h-6" src="https://example.com/ig-logo.svg" /></a>
+                            <a className="text-gray-400 hover:text-white" href="#">
+                                <Airplay className="w-5 h-5" />
+                            </a>
+                            <a className="text-gray-400 hover:text-white" href="#">
+                                <Airplay className="w-5 h-5" />
+                            </a>
+                            <a className="text-gray-400 hover:text-white" href="#">
+                                <Airplay className="w-5 h-5" />
+                            </a>
                         </div>
                     </div>
                 </div>
