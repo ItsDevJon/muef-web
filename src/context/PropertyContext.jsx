@@ -52,6 +52,8 @@ export const PropertyProvider = ({ children }) => {
         return sorted;
     }, [properties, searchQuery, locationQuery, sortBy]);
 
+    const getPropertyById = (id) => properties.find((p) => p.id === id);
+
     return (
         <PropertyContext.Provider
             value={{
@@ -63,7 +65,8 @@ export const PropertyProvider = ({ children }) => {
                 locationQuery,
                 setLocationQuery,
                 sortBy,
-                setSortBy
+                setSortBy,
+                getPropertyById
             }}
         >
             {children}

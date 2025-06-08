@@ -1,5 +1,6 @@
 import PropertyCard from "../PropertyCard.jsx";
 import {useProperties} from "../../context/PropertyContext.jsx";
+import {Link} from "react-router-dom";
 
 const PropertyList = () => {
 
@@ -42,7 +43,9 @@ const PropertyList = () => {
                 {loading
                     ? Array.from({ length: 8 }).map((_, index) => <PropertyCardSkeleton key={index} />)
                     : filteredProperties.map((property) => (
-                        <PropertyCard key={property.id} property={property} />
+                        <Link to={`/properties/${property.id}`} key={`link-${property.id}`}>
+                            <PropertyCard key={property.id} property={property} />
+                        </Link>
                     ))
                 }
             </div>

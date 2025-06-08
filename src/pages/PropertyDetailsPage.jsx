@@ -1,68 +1,51 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 import PropertyGallery from "../components/PropertyDetailsPage/PropertyGallery.jsx";
 import PropertySummary from "../components/PropertyDetailsPage/PropertySummary.jsx";
 import PropertyNearbyMap from "../components/PropertyDetailsPage/PropertyNearbyMap.jsx";
+import {useParams} from "react-router-dom";
+import {useProperties} from "../context/PropertyContext.jsx";
 
 const PropertyDetailsPage = () => {
-    const mockProperty = {
-        "title": "3 Logelako Apartamentu Zabal bat, Deustun",
-        "owner": {
-            "name": "Jane Doe",
-            "avatar": "https://i.pravatar.cc/44?img=26",
-        },
-        "gallery": [
-            "/images/house-01.jpg",
-            "/images/house-02.jpg",
-            "/images/house-03.jpg",
-            "/images/house-04.jpg",
-            "/images/house-05.jpg",
-        ],
-        "alt": "Balkoidun apartamentu modernoa",
-        "price": 470000,
-        "rooms": 3,
-        "bathrooms": 2,
-        "area": 110,
-        "hasGarage": true,
-        "description": "Ikasleentzat aproposa, Deustuko Unibertsitatetik pauso batera kokatua. Apartamentu honek kokapen pribilegiatua du, ikasketa eta eguneroko erosotasuna uztartzen dituena. Erabat hornitua dago, bizitzeko prest, eta ekipamendu modernoak ditu: sukalde osatua, altzari erosoak eta biltegiratze espazio ugari. Eguzkiaren argia etxebizitza osoan zehar sartzen da, eta balkoi zabal eta eguzkitsu batek aire librean atseden hartzeko aukera paregabea eskaintzen du. Inguruan, zerbitzu guztiak eskura daude: supermerkatuak, garraio publikoa, gimnasioa eta aisialdirako guneak. Bizitzeko toki atsegina eta funtzionala, ikasleentzako pentsatua.",
-        "location": "Bilbo, Bizkaia",
-        "nearby": [
-            {
-                "icon": "🚇",
-                "name": "Indautxu Metro Geltokia",
-                "distance": "300m",
-                "walking_time": "4 min oinez"
-            },
-            {
-                "icon": "🏬",
-                "name": "El Corte Ingles Gran Via",
-                "distance": "700m",
-                "walking_time": "9 min oinez"
-            },
-            {
-                "icon": "🏟️",
-                "name": "San Mames Estadioa",
-                "distance": "1,2km",
-                "walking_time": "17 min oinez"
-            },
-            {
-                "icon": "🎓",
-                "name": "Deustuko Unibertsitatea",
-                "distance": "1,6km",
-                "walking_time": "5 min oinez"
-            }
-        ],
-        "listed": "Duela 2 egun zerrendatua",
-        "bookmarked": false
-    };
 
-    return (
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-7">
-            <PropertyGallery images={mockProperty.gallery} />
-            <PropertySummary property={mockProperty} />
-            <hr className="border-gray-200 mt-6" />
-            <PropertyNearbyMap locationName={mockProperty.location} nearbyPlaces={mockProperty.nearby} />
+    const { id } = useParams()
+    const { getPropertyById, loading: contextLoading } = useProperties()
+
+    const [property, setProperty] = useState(null)
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (!contextLoading) {
+            const found = getPropertyById(id);
+            if (found) {
+                setProperty(found);
+                setLoading(false);
+            }
+        }
+    }, [id, contextLoading, getPropertyById]);
+
+    const PropertyDetailsSkeleton = () => (
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-7 space-y-8 animate-pulse">
+            <div className="grid grid-cols-4 gap-4">
+                <div className="col-span-2 h-96 bg-gray-200 rounded-xl" />
+                <div className="col-span-1 h-96 bg-gray-200 rounded-xl" />
+                <div className="col-span-1 h-96 bg-gray-200 rounded-xl" />
+            </div>
+            <div className="h-8 bg-gray-200 rounded w-1/3" />
+            <div className="h-4 bg-gray-200 rounded w-1/2" />
+            <div className="h-72 bg-gray-200 rounded-xl" />
         </div>
     );
+
+    return loading
+        ? <PropertyDetailsSkeleton/>
+        : (
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-7">
+                <PropertyGallery images={property.gallery}/>
+                <PropertySummary property={property}/>
+                <hr className="border-gray-200 mt-6"/>
+                <PropertyNearbyMap locationName={property.location} nearbyPlaces={property.nearby}/>
+            </div>
+        );
 };
 
 export default PropertyDetailsPage;
