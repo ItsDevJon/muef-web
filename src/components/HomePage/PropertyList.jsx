@@ -1,46 +1,27 @@
-import { useEffect, useState } from "react";
 import PropertyCard from "../PropertyCard.jsx";
-import { useSearch } from "../../context/SearchContext.jsx";
+import {useProperties} from "../../context/PropertyContext.jsx";
 
 const PropertyList = () => {
 
-    const [properties, setProperties] = useState([]);
-    const [sortBy, setSortBy] = useState("relevant");
-    const { searchQuery, locationQuery } = useSearch();
+    const { loading, filteredProperties, sortBy, setSortBy } = useProperties();
 
-    useEffect(() => {
-        fetch('/data/properties.json')
-            .then((res) => res.json())
-            .then((data) => setProperties(data));
-    }, []);
-
-    const extractPrice = (meta) => {
-        const match = meta.match(/€([\d,.]+)/);
-        return match ? parseFloat(match[1].replace(',', '')) : 0;
-    };
-
-    const filtered = properties
-        .filter((p) => {
-            const title = p.title?.toLowerCase() || '';
-            const location = p.location?.toLowerCase() || '';
-            const query = searchQuery.toLowerCase();
-            const locQuery = locationQuery.toLowerCase();
-
-            return title.includes(query) && location.includes(locQuery);
-        })
-        .sort((a, b) => {
-            if (sortBy === 'price-asc') {
-                return extractPrice(a.meta) - extractPrice(b.meta);
-            } else if (sortBy === 'price-desc') {
-                return extractPrice(b.meta) - extractPrice(a.meta);
-            }
-            return 0; // relevant / default
-        });
+    const PropertyCardSkeleton = () => (
+        <div className="rounded-2xl overflow-hidden border p-4 animate-pulse space-y-4 bg-white">
+            <div className="w-full h-60 bg-gray-200 rounded-xl" />
+            <div className="h-5 bg-gray-200 rounded w-1/2" />
+            <div className="h-4 bg-gray-200 rounded w-1/3" />
+            <div className="flex gap-3">
+                <div className="h-4 w-12 bg-gray-200 rounded" />
+                <div className="h-4 w-12 bg-gray-200 rounded" />
+                <div className="h-4 w-12 bg-gray-200 rounded" />
+            </div>
+        </div>
+    );
 
     return (
         <div className="space-y-11">
             <div className="flex justify-between items-center">
-                <h2 className="text-2xl font-medium text-gray-800">{filtered.length} properties found</h2>
+                <h2 className="text-2xl font-medium text-gray-800">{filteredProperties.length} properties found</h2>
                 <div className="relative">
                     <select
                         value={sortBy}
@@ -58,9 +39,12 @@ const PropertyList = () => {
                 className="grid gap-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
                 style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(426px, 1fr))' }}
             >
-                {filtered.map((p, i) => (
-                    <PropertyCard key={i} property={p} />
-                ))}
+                {loading
+                    ? Array.from({ length: 8 }).map((_, index) => <PropertyCardSkeleton key={index} />)
+                    : filteredProperties.map((property) => (
+                        <PropertyCard key={property.id} property={property} />
+                    ))
+                }
             </div>
         </div>
     );

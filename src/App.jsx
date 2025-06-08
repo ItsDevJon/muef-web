@@ -3,14 +3,14 @@ import { MyOffers } from './pages/MyOffers'
 import { Chat } from './pages/Chat'
 import HomePage from './pages/HomePage'
 import Layout from './components/Layout'
-import { SearchProvider } from './context/SearchContext'
 
 import './index.css'
 import PropertyDetailsPage from './pages/PropertyDetailsPage'
+import {PropertyProvider} from "./context/PropertyContext.jsx";
 
 function App() {
     return (
-        <SearchProvider>
+        <PropertyProvider>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
@@ -21,7 +21,7 @@ function App() {
                     <Route path="*" element={<HomePage />} />
                 </Route>
             </Routes>
-        </SearchProvider>
+        </PropertyProvider>
     )
 }
 

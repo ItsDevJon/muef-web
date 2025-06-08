@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useSearch } from "../../context/SearchContext.jsx";
 import FiltersModal from "./FiltersModal.jsx";
+import {useProperties} from "../../context/PropertyContext.jsx";
 
 const SearchBar = () => {
-    const { searchQuery, setSearchQuery, locationQuery, setLocationQuery } = useSearch();
+    const { searchQuery, setSearchQuery, locationQuery, setLocationQuery } = useProperties();
     const [showFilters, setShowFilters] = useState(false);
 
     const applyFilters = (filters) => {
