@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { MyOffers } from './pages/MyOffers'
-import { Chat } from './pages/Chat'
+import ChatPage from './pages/ChatPage.jsx'
 import HomePage from './pages/HomePage'
 import Layout from './components/Layout'
 
@@ -17,7 +17,7 @@ function App() {
                     <Route path="bilatzailea" element={<HomePage />} />
                     <Route path='/properties/:id' element={<PropertyDetailsPage />} />
                     <Route path="nire-iragarkiak" element={<MyOffers />} />
-                    <Route path="txat" element={<Chat />} />
+                    <Route path="txat" element={<ChatPage />} />
                     <Route path="*" element={<HomePage />} />
                 </Route>
             </Routes>
