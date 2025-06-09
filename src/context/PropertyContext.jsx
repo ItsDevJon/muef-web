@@ -1,4 +1,4 @@
-import {createContext, useContext, useEffect, useMemo, useState} from "react";
+import {createContext, useCallback, useContext, useEffect, useMemo, useState} from "react";
 
 const PropertyContext = createContext();
 
@@ -10,6 +10,9 @@ export const PropertyProvider = ({ children }) => {
     const [searchQuery, setSearchQuery] = useState("");
     const [locationQuery, setLocationQuery] = useState("");
     const [sortBy, setSortBy] = useState("relevant");
+    const [priceRange, setPriceRange] = useState(""); // e.g. "800-1200"
+    const [areaRange, setAreaRange] = useState("");
+
 
     useEffect(() => {
         fetch("/data/properties.json")
@@ -33,13 +36,23 @@ export const PropertyProvider = ({ children }) => {
     }, []);
 
     const filteredProperties = useMemo(() => {
-        const filtered = properties.filter((p) => {
-            const title = p.title?.toLowerCase() || "";
-            const location = p.location?.toLowerCase() || "";
-            return (
-                title.includes(searchQuery.toLowerCase()) &&
-                location.includes(locationQuery.toLowerCase())
-            );
+        const filtered = properties.filter(p => {
+            const titleMatch    = p.title?.toLowerCase().includes(searchQuery.toLowerCase());
+            const locationMatch = p.location?.toLowerCase().includes(locationQuery.toLowerCase());
+
+            // parse only if the user has entered something
+            const [minPrice, maxPrice] = priceRange.split("-").map(Number);
+            const [minArea, maxArea] = areaRange.split("-").map(Number);
+
+            const priceMatch = !priceRange
+                ? true
+                : p.price >= minPrice && (isFinite(maxPrice) ? p.price <= maxPrice : true);
+
+            const areaMatch = !areaRange
+                ? true
+                : p.area >= minArea && (isFinite(maxArea) ? p.area <= maxArea : true);
+
+            return titleMatch && locationMatch && priceMatch && areaMatch;
         });
 
         const sorted = [...filtered];
@@ -50,25 +63,45 @@ export const PropertyProvider = ({ children }) => {
         }
 
         return sorted;
-    }, [properties, searchQuery, locationQuery, sortBy]);
+    }, [properties, searchQuery, locationQuery, sortBy, priceRange, areaRange]);
 
-    const getPropertyById = (id) => properties.find((p) => p.id === id);
+    const getPropertyById = useCallback(
+        (id) => properties.find((p) => p.id === id),
+        [properties]
+    );
+
+    // memoize the value object so it only changes when one of its parts changes
+    const contextValue = useMemo(() => ({
+        loading,
+        properties,
+        filteredProperties,
+        searchQuery,
+        setSearchQuery,
+        locationQuery,
+        setLocationQuery,
+        sortBy,
+        setSortBy,
+        priceRange,
+        setPriceRange,
+        areaRange,
+        setAreaRange,
+        getPropertyById,
+    }), [
+        loading,
+        properties,
+        filteredProperties,
+        searchQuery,
+        locationQuery,
+        sortBy,
+        priceRange,
+        areaRange,
+        // setters from useState (setSearchQuery, etc.) are stable and
+        // don’t need to go in the deps array, but including them is harmless
+        getPropertyById
+    ]);
 
     return (
-        <PropertyContext.Provider
-            value={{
-                loading,
-                properties,
-                filteredProperties,
-                searchQuery,
-                setSearchQuery,
-                locationQuery,
-                setLocationQuery,
-                sortBy,
-                setSortBy,
-                getPropertyById
-            }}
-        >
+        <PropertyContext.Provider value={contextValue}>
             {children}
         </PropertyContext.Provider>
     );
