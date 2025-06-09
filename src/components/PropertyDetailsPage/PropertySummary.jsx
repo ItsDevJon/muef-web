@@ -50,14 +50,15 @@ const PropertySummary = ({ property }) => {
 
                 <h3 className="text-2xl font-medium mb-2">Overview</h3>
                 <p className="text-[#6E6E6E] font-light mb-4">{description}</p>
-                {/*{description?.[1] && <p className="text-gray-700">{description[1]}</p>}*/}
             </div>
 
             {/* Right: Sidebar card */}
             <div className="flex flex-col border border-gray-300 rounded-xl p-6 space-y-6 divide-y-1 divide-gray-200">
                 <div className="pb-6">
                     <p className="text-base text-gray-500 mb-2">Buy with the price</p>
-                    <p className="text-[2rem] leading-none font-medium">{price.toLocaleString()} €</p>
+                    <p className="text-[2rem] leading-none font-medium">
+                        {price.toLocaleString()} € <span className="text-lg font-normal text-gray-500">/ hillero</span>
+                    </p>
                 </div>
 
                 {owner && (

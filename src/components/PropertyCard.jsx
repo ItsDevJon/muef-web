@@ -34,7 +34,7 @@ const PropertyCard = ({ property }) => {
 
             {/* Price */}
             <div className="text-[1.75rem] font-semibold">
-                {property.price.toLocaleString()} €<span hidden className="text-sm font-normal text-gray-500">/ mes</span>
+                {property.price.toLocaleString()} € <span className="text-sm font-normal text-gray-500">/ hillero</span>
             </div>
 
             {/* Location */}
