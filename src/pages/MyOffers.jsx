@@ -1,9 +1,8 @@
-export function MyOffers() {
 
+const MyOffers = () => {
     return (
-        <>
-            <h1>MyOffers</h1>
-        </>
-    )
-
+        <h1>My Offers</h1>
+    );
 }
+
+export default MyOffers;

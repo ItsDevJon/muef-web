@@ -1,8 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import FilterCone from '../assets/filter-cone.svg?react';
+import {useAuth} from "../context/AuthProvider.jsx";
+import {Power} from "lucide-react";
 
 const Navbar = () => {
+    const { user, logout } = useAuth();
+
     return (
         <nav className="container mx-auto py-4 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div className="flex items-center space-x-4 gap-2">
@@ -31,12 +35,20 @@ const Navbar = () => {
                 >
                     Iragarkia Argitaratu
                 </a>
-                <a
-                    href="#"
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-md"
-                >
-                    Log in
-                </a>
+                {user ? (
+                    <button
+                        onClick={logout}
+                        className="flex items-center gap-2 py-2 px-4 border border-red-100 rounded-md bg-red-100 hover:bg-red-200 text-red-700 text-sm font-medium"
+                    >
+                        <Power className="w-5 h-5" />
+                        <span>Saioa Itxi</span>
+                        <span className="sr-only">Logout</span>
+                    </button>
+                ) : (
+                    <NavLink to="/login" className="bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2 px-4 rounded-md">
+                        Hasi Saioa
+                    </NavLink>
+                )}
             </div>
         </nav>
     )
