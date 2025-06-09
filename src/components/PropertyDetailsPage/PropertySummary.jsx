@@ -1,5 +1,6 @@
 import React from 'react';
-import {Bath, Bed, Car, Expand} from "lucide-react";
+import {Bath, Bed, Bookmark, Car, Expand, MessageCircle} from "lucide-react";
+import {Link} from "react-router-dom";
 
 const PropertySummary = ({ property }) => {
     const {
@@ -70,15 +71,18 @@ const PropertySummary = ({ property }) => {
                                 <p className="text-base font-medium text-gray-900">{owner.name}</p>
                                 <p className="text-sm text-gray-500">Jabea</p>
                             </div>
-                            <button className=" cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium ml-auto py-2 px-4 rounded-lg">
-                                Get in touch
-                            </button>
+                            <Link to="/txat" className="ml-auto">
+                                <button className="flex gap-2 items-center py-2 px-4 cursor-pointer bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg">
+                                    <MessageCircle className="w-4 h-4" />
+                                    Mezua Bidali
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 )}
 
                 <button className="w-full cursor-pointer text-sm text-gray-600 hover:text-indigo-600 border border-gray-300 rounded-lg py-2 flex items-center justify-center gap-2">
-                    <span className="material-icons text-base">bookmark_border</span>
+                    <Bookmark className="w-4 h-4" />
                     Save to my Bookmarks
                 </button>
             </div>
