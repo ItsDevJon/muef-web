@@ -7,7 +7,6 @@ export const PropertyProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     // Filters & Sorting
-    const [searchQuery, setSearchQuery] = useState("");
     const [locationQuery, setLocationQuery] = useState("");
     const [sortBy, setSortBy] = useState("relevant");
     const [priceRange, setPriceRange] = useState(""); // e.g. "800-1200"
@@ -37,7 +36,6 @@ export const PropertyProvider = ({ children }) => {
 
     const filteredProperties = useMemo(() => {
         const filtered = properties.filter(p => {
-            const titleMatch    = p.title?.toLowerCase().includes(searchQuery.toLowerCase());
             const locationMatch = p.location?.toLowerCase().includes(locationQuery.toLowerCase());
 
             // parse only if the user has entered something
@@ -52,7 +50,7 @@ export const PropertyProvider = ({ children }) => {
                 ? true
                 : p.area >= minArea && (isFinite(maxArea) ? p.area <= maxArea : true);
 
-            return titleMatch && locationMatch && priceMatch && areaMatch;
+            return locationMatch && priceMatch && areaMatch;
         });
 
         const sorted = [...filtered];
@@ -63,7 +61,7 @@ export const PropertyProvider = ({ children }) => {
         }
 
         return sorted;
-    }, [properties, searchQuery, locationQuery, sortBy, priceRange, areaRange]);
+    }, [properties, locationQuery, sortBy, priceRange, areaRange]);
 
     const getPropertyById = useCallback(
         (id) => properties.find((p) => p.id === id),
@@ -75,8 +73,6 @@ export const PropertyProvider = ({ children }) => {
         loading,
         properties,
         filteredProperties,
-        searchQuery,
-        setSearchQuery,
         locationQuery,
         setLocationQuery,
         sortBy,
@@ -90,7 +86,6 @@ export const PropertyProvider = ({ children }) => {
         loading,
         properties,
         filteredProperties,
-        searchQuery,
         locationQuery,
         sortBy,
         priceRange,
