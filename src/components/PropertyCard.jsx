@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {Bed, Bath, Expand, Bookmark, BookmarkCheck} from "lucide-react";
+import PropTypes from "prop-types";
 
 const PropertyCard = ({ property }) => {
 
@@ -64,5 +65,17 @@ const PropertyCard = ({ property }) => {
         </div>
     );
 }
+
+PropertyCard.propTypes = {
+    property: PropTypes.shape({
+        gallery: PropTypes.arrayOf(PropTypes.string).isRequired,
+        price: PropTypes.number.isRequired,
+        location: PropTypes.string.isRequired,
+        rooms: PropTypes.number.isRequired,
+        bathrooms: PropTypes.number.isRequired,
+        area: PropTypes.number.isRequired,
+        bookmarked: PropTypes.bool
+    }).isRequired
+};
 
 export default PropertyCard;
