@@ -1,6 +1,7 @@
 import React from 'react';
 import {Bath, Bed, Bookmark, Car, Expand, MessageCircle} from "lucide-react";
 import {Link} from "react-router-dom";
+import PropTypes from "prop-types";
 
 const PropertySummary = ({ property }) => {
     const {
@@ -88,6 +89,22 @@ const PropertySummary = ({ property }) => {
             </div>
         </section>
     );
+};
+
+PropertySummary.propTypes = {
+    property: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        rooms: PropTypes.number,
+        bathrooms: PropTypes.number,
+        area: PropTypes.number,
+        hasGarage: PropTypes.bool,
+        description: PropTypes.string.isRequired,
+        price: PropTypes.number.isRequired,
+        owner: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            avatar: PropTypes.string.isRequired
+        })
+    }).isRequired
 };
 
 export default PropertySummary;
