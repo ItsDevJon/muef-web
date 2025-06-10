@@ -43,10 +43,7 @@ const PropertyList = () => {
                     <span className="material-icons absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
                 </div>
             </div>
-            <div
-                className="grid gap-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(426px, 1fr))' }}
-            >
+            <div className="grid gap-16 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {loading
                     ? Array.from({ length: 8 }).map((_, index) => <PropertyCardSkeleton key={index} />)
                     : filteredProperties.map((property) => (
