@@ -64,9 +64,6 @@ const SearchBar = () => {
                     </select>
                     <ChevronDown className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none" />
                 </div>
-                <button className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-8 py-3 rounded-lg w-full md:w-auto">
-                    Search
-                </button>
             </div>
         </div>
     );
