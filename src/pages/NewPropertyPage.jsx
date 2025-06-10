@@ -13,6 +13,35 @@ const formFields = [
     { name: "bathrooms", label: "Bainugelak", type: "number" },
 ];
 
+const DEFAULT_DESCRIPTION = "IIkasleentzat aproposa, Deustuko Unibertsitatetik pauso batera kokatua. Apartamentu honek kokapen pribilegiatua du, ikasketa eta eguneroko erosotasuna uztartzen dituena. Erabat hornitua dago, bizitzeko prest, eta ekipamendu modernoak ditu: sukalde osatua, altzari erosoak eta biltegiratze espazio ugari. Eguzkiaren argia etxebizitza osoan zehar sartzen da, eta balkoi zabal eta eguzkitsu batek aire librean atseden hartzeko aukera paregabea eskaintzen du. Inguruan, zerbitzu guztiak eskura daude: supermerkatuak, garraio publikoa, gimnasioa eta aisialdirako guneak. Bizitzeko toki atsegina eta funtzionala, ikasleentzako pentsatua.";
+
+const DEFAULT_NEARBY_PLACES = [
+    {
+        "icon": "🚇",
+        "name": "Indautxu Metro Geltokia",
+        "distance": "300m",
+        "walking_time": "4 min oinez"
+    },
+    {
+        "icon": "🏬",
+        "name": "El Corte Ingles Gran Via",
+        "distance": "700m",
+        "walking_time": "9 min oinez"
+    },
+    {
+        "icon": "🏟️",
+        "name": "San Mames Estadioa",
+        "distance": "1,2km",
+        "walking_time": "17 min oinez"
+    },
+    {
+        "icon": "🎓",
+        "name": "Deustuko Unibertsitatea",
+        "distance": "1,6km",
+        "walking_time": "5 min oinez"
+    }
+];
+
 const NewPropertyPage = () => {
     const { user } = useAuth();
     const { setProperties, setCreatedProperties } = useProperties();
@@ -44,12 +73,17 @@ const NewPropertyPage = () => {
 
         const newProperty = {
             id: nanoid(8),
-            ...form,
             price: Number(form.price),
             area: Number(form.area),
             rooms: Number(form.rooms),
             bathrooms: Number(form.bathrooms),
-            owner: user.username,
+            owner: {
+                name: user.name,
+                avatar: "https://i.pravatar.cc/44"
+            },
+            hasGarage: true,
+            description: DEFAULT_DESCRIPTION,
+            nearby: DEFAULT_NEARBY_PLACES,
             gallery: form.gallery,
             bookmarked: false,
         };
