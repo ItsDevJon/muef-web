@@ -4,3 +4,58 @@ services:
     build: .
     ports:
       - "5174:80"
+    networks:
+      - muef-net
+
+  db:
+    image: mariadb:10.6
+    container_name: matomo-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: matomo
+      MYSQL_USER: matomo
+      MYSQL_PASSWORD: matomopass
+    volumes:
+      - matomo_db:/var/lib/mysql
+    networks:
+      - muef-net
+
+  matomo:
+    image: matomo:latest
+    container_name: matomo
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      MATOMO_DATABASE_HOST: db
+      MATOMO_DATABASE_ADAPTER: mysqli
+      MATOMO_DATABASE_TABLES_PREFIX: matomo_
+      MATOMO_DATABASE_USERNAME: matomo
+      MATOMO_DATABASE_PASSWORD: matomopass
+      MATOMO_DATABASE_DBNAME: matomo
+    depends_on:
+      - db
+    volumes:
+      - matomo_data:/var/www/html
+    networks:
+      - muef-net
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - muef-net
+
+volumes:
+  matomo_db:
+  matomo_data:
+  grafana_data:
+
+networks:
+  muef-net:
+    driver: bridge
