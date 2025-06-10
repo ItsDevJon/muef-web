@@ -26,17 +26,6 @@ const MyPropertiesPage = () => {
                     <h2 className="text-2xl font-medium text-gray-800">
                         Nire Iragarkiak ({createdProperties.length})
                     </h2>
-                    <div className="relative">
-                        <select
-                            value={"relevant"} // Default value, can be changed based on your sorting logic
-                            className="appearance-none bg-white border border-gray-300 rounded-lg pl-4 pr-8 py-2 text-gray-700 focus:ring-indigo-500 focus:border-indigo-500">
-                            <option value={"relevant"}>Relevant</option>
-                            <option value={"price-asc"}>Price: Low to High</option>
-                            <option value={"price-desc"}>Price: High to Low</option>
-                            <option>Newest</option>
-                        </select>
-                        <span className="material-icons absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 pointer-events-none">expand_more</span>
-                    </div>
                 </div>
                 <div
                     className="grid gap-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"

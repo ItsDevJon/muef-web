@@ -83,6 +83,7 @@ export const PropertyProvider = ({ children }) => {
     const contextValue = useMemo(() => ({
         loading,
         properties,
+        setProperties,
         filteredProperties,
         createdProperties,
         setCreatedProperties,
@@ -99,6 +100,7 @@ export const PropertyProvider = ({ children }) => {
     }), [
         loading,
         properties,
+        setProperties,
         filteredProperties,
         createdProperties,
         setCreatedProperties,
