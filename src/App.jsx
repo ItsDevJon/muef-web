@@ -13,9 +13,22 @@ import LoginPage from "./pages/LoginPage.jsx";
 import PropertyDetailsPage from './pages/PropertyDetailsPage'
 import RegisterPage from "./pages/RegisterPage.jsx";
 import NewPropertyPage from "./pages/NewPropertyPage.jsx";
+import {useEffect} from "react";
 
 
 function App() {
+
+    useEffect(() => {
+
+        const host = window.location.hostname;
+        const matomoHost = `http://${host}:8080`;
+
+        const _mtm = window._mtm = window._mtm || [];
+        _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+        const d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.async=true; g.src=`${matomoHost}/js/container_cFXAUFVF.js`; s.parentNode.insertBefore(g,s);
+    }, [])
+
     return (
         <AuthProvider>
             <PropertyProvider>
