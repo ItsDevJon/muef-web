@@ -50,7 +50,7 @@ export const AuthProvider = ({children}) => {
         const foundUser = users.find(u => u.username === username && u.password === password);
         if (foundUser) {
             setUser(foundUser);
-            navigate('/bilatzailea'); // Redirect to the search page after login
+            navigate(-1); // Redirect to the search page after login
             return true;
         }
 
