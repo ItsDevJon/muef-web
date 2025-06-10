@@ -1,6 +1,8 @@
 import {useProperties} from "../context/PropertyContext.jsx";
-import {Link} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 import PropertyCard from "../components/PropertyCard.jsx";
+import React from "react";
+import {Plus} from "lucide-react";
 
 const MyPropertiesPage = () => {
 
@@ -26,6 +28,10 @@ const MyPropertiesPage = () => {
                     <h2 className="text-2xl font-medium text-gray-800">
                         Nire Iragarkiak ({createdProperties.length})
                     </h2>
+                    <NavLink to="/nire-iragarkiak/argitaratu" className="flex text-sm font-medium py-2 px-4 border rounded-md bg-indigo-600 hover:bg-indigo-700 text-white">
+                        <Plus className="w-5 h-5 mr-2" />
+                        Iragarki Berria
+                    </NavLink>
                 </div>
                 <div
                     className="grid gap-16 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
