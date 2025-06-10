@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
-import {useProperties} from "../context/PropertyContext.jsx";
+import { useProperties } from "../context/PropertyContext.jsx";
+import { X } from "lucide-react";
 
 const formFields = [
     { name: "title", label: "Izenburua", type: "text" },
+    { name: "description", label: "Deskripzioa", type: "text" },
     { name: "location", label: "Kokapena", type: "text" },
     { name: "price", label: "Prezioa (€)", type: "number" },
     { name: "area", label: "Tamainia (m²)", type: "number" },
@@ -42,26 +44,23 @@ const DEFAULT_NEARBY_PLACES = [
     }
 ];
 
+const EMPTY_FORM = {
+    title: "",
+    description: "",
+    location: "",
+    price: "",
+    area: "",
+    rooms: "",
+    bathrooms: "",
+    gallery: [],
+};
+
 const NewPropertyPage = () => {
     const { user } = useAuth();
     const { setProperties, setCreatedProperties } = useProperties();
-    const navigate = useNavigate();
 
-    const [form, setForm] = useState({
-        title: "",
-        location: "",
-        price: "",
-        area: "",
-        rooms: "",
-        bathrooms: "",
-        gallery: [
-            "/images/properties/qM7uG1Xt/1.jpg",
-            "/images/properties/qM7uG1Xt/2.jpg",
-            "/images/properties/qM7uG1Xt/3.jpg",
-            "/images/properties/qM7uG1Xt/4.jpg",
-            "/images/properties/qM7uG1Xt/5.jpg"
-        ],
-    });
+    const [form, setForm] = useState(EMPTY_FORM);
+    const [success, setSuccess] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -84,14 +83,22 @@ const NewPropertyPage = () => {
             hasGarage: true,
             description: DEFAULT_DESCRIPTION,
             nearby: DEFAULT_NEARBY_PLACES,
-            gallery: form.gallery,
+            gallery: [
+                "/images/properties/qM7uG1Xt/1.jpg",
+                "/images/properties/qM7uG1Xt/2.jpg",
+                "/images/properties/qM7uG1Xt/3.jpg",
+                "/images/properties/qM7uG1Xt/4.jpg",
+                "/images/properties/qM7uG1Xt/5.jpg"
+            ],
             bookmarked: false,
         };
 
         setCreatedProperties((prevCreatedProperties) => [...prevCreatedProperties, newProperty]);
         setProperties((prevProperties) => [...prevProperties, newProperty]);
 
-        navigate("/"); // or /my-properties
+        setSuccess(true);
+        setForm(EMPTY_FORM);
+
     };
 
     return (
@@ -99,6 +106,18 @@ const NewPropertyPage = () => {
             <h1 className="text-2xl font-semibold mb-6">
                 Iragarki Berria Sortu
             </h1>
+            {success && (
+                <div className="flex mb-4 p-3 bg-green-100 text-green-800 rounded">
+                    Iragarki berria arazo gabe sortu da! <Link to="/nire-iragarkiak" className="cursor-pointer ml-auto text-indigo-600 hover:underline">Ikusi</Link>
+                    <button
+                        type="button"
+                        onClick={() => setSuccess(false)}
+                        className="cursor-pointer ml-4 text-gray-500 hover:text-gray-700"
+                    >
+                        <X className="w-5 h-5" />
+                    </button>
+                </div>
+            )}
             <form onSubmit={handleSubmit} className="space-y-4">
                 {formFields.map(({name, label, type}) => (
                     <div key={name}>
