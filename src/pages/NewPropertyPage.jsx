@@ -84,11 +84,11 @@ const NewPropertyPage = () => {
             description: DEFAULT_DESCRIPTION,
             nearby: DEFAULT_NEARBY_PLACES,
             gallery: [
-                "/images/properties/qM7uG1Xt/1.jpg",
-                "/images/properties/qM7uG1Xt/2.jpg",
-                "/images/properties/qM7uG1Xt/3.jpg",
-                "/images/properties/qM7uG1Xt/4.jpg",
-                "/images/properties/qM7uG1Xt/5.jpg"
+                "/images/properties/aK3tV9Fb/1.webp",
+                "/images/properties/aK3tV9Fb/2.webp",
+                "/images/properties/aK3tV9Fb/3.webp",
+                "/images/properties/aK3tV9Fb/4.webp",
+                "/images/properties/aK3tV9Fb/5.webp"
             ],
             bookmarked: false,
         };
