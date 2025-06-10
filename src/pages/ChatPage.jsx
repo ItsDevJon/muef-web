@@ -9,28 +9,28 @@ const mockConversations = {
                 id: 1,
                 sender: "Zu",
                 role: "me",
-                time: "10:30 AM",
+                time: "10:30",
                 text: "Kaixo, Sandra! UPV/EHUtik gertu dagoen estudioko apartamentua interesatzen zait. Gehiago esango zenidake?",
             },
             {
                 id: 2,
                 sender: "Sandra Olaiz",
                 role: "other",
-                time: "10:32 AM",
+                time: "10:32",
                 text: "Kaixo! Noski. Campusetik 5 minutura dago eta zerbitzu guztiak hartzen ditu. Ohea, idazmahaia, armairua eta sukaldea.",
             },
             {
                 id: 3,
                 sender: "Zu",
                 role: "me",
-                time: "10:34 AM",
+                time: "10:34",
                 text: "Bikain! Eta WiFi-a barne dago?",
             },
             {
                 id: 4,
                 sender: "Sandra Olaiz",
                 role: "other",
-                time: "10:35 AM",
+                time: "10:35",
                 text: "Bai noski! WiFi-a barne dago eta oso azkarra da.",
             },
         ],
@@ -42,13 +42,13 @@ const mockConversations = {
             {
                 sender: "Zu",
                 role: "me",
-                time: "9:45 AM",
+                time: "9:45",
                 text: "Kaixo Angel! Etxea oraindik eskuragarri dago?",
             },
             {
                 sender: "Angel Izquierdo",
                 role: "other",
-                time: "9:50 AM",
+                time: "9:50",
                 text: "Bai, interesatuta bazaude bihar bidaliko dizut kontratuaren xehetasunak.",
             },
         ],
@@ -88,13 +88,6 @@ const ChatPage = () => {
                 {/* Sidebar */}
                 <div className="w-full max-w-sm border-r flex flex-col">
                     <div className="p-4 border-b font-semibold text-lg">Mezuak</div>
-                    {/*<div className="p-2">*/}
-                    {/*    <input*/}
-                    {/*        type="text"*/}
-                    {/*        placeholder="Search conversations..."*/}
-                    {/*        className="w-full px-3 py-2 border rounded text-sm"*/}
-                    {/*    />*/}
-                    {/*</div>*/}
                     <div className="flex flex-col">
                         {Object.entries(conversations).map(([id, convo]) => (
                             <div
@@ -151,14 +144,14 @@ const ChatPage = () => {
                                 }
                             }}
                             type="text"
-                            placeholder="Type your message..."
+                            placeholder="Idatzi mezu bat..."
                             className="flex-1 px-4 py-2 border rounded-lg"
                         />
                         <button
                             onClick={handleSend}
                             className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                         >
-                            Send
+                            Bidali
                         </button>
                     </div>
                 </div>
