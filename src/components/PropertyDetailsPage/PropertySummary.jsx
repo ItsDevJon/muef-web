@@ -48,14 +48,14 @@ const PropertySummary = ({ property }) => {
                     )}
                 </div>
 
-                <h3 className="text-2xl font-medium mb-2">Overview</h3>
+                <h3 className="text-2xl font-medium mb-2">Deskripzioa</h3>
                 <p className="text-[#6E6E6E] font-light mb-4">{description}</p>
             </div>
 
             {/* Right: Sidebar card */}
             <div className="flex flex-col border border-gray-300 rounded-xl p-6 space-y-6 divide-y-1 divide-gray-200">
                 <div className="pb-6">
-                    <p className="text-base text-gray-500 mb-2">Buy with the price</p>
+                    <p className="text-base text-gray-500 mb-2">Prezioa</p>
                     <p className="text-[2rem] leading-none font-medium">
                         {price.toLocaleString()} € <span className="text-lg font-normal text-gray-500">/ hillero</span>
                     </p>
@@ -85,7 +85,7 @@ const PropertySummary = ({ property }) => {
 
                 <button className="w-full cursor-pointer text-sm text-gray-600 hover:text-indigo-600 border border-gray-300 rounded-lg py-2 flex items-center justify-center gap-2">
                     <Bookmark className="w-4 h-4" />
-                    Save to my Bookmarks
+                    Gorde nire laster-marketan
                 </button>
             </div>
         </section>
