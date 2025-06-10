@@ -29,12 +29,9 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="flex items-center space-x-4">
-                <a
-                    href="#"
-                    className="text-sm font-medium py-2 px-4 border rounded-md text-indigo-600 hover:bg-indigo-50"
-                >
+                <NavLink to="/nire-iragarkiak/argitaratu" className="text-sm font-medium py-2 px-4 border rounded-md text-indigo-600 hover:bg-indigo-50">
                     Iragarkia Argitaratu
-                </a>
+                </NavLink>
                 {user ? (
                     <button
                         onClick={logout}

@@ -1,13 +1,24 @@
 import { useState } from "react";
-import {Bed, Bath, Expand, Bookmark, BookmarkCheck} from "lucide-react";
+import {Bed, Bath, Expand, Bookmark, BookmarkCheck, Trash2} from "lucide-react";
 import PropTypes from "prop-types";
+import {useProperties} from "../context/PropertyContext.jsx";
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, canBeDeleted = false }) => {
+
+    const { deletePropertyById } = useProperties();
 
     const [bookmarked, setBookmarked] = useState(property.bookmarked || false);
 
     const toggleBookmark = () => {
         setBookmarked(!bookmarked);
+    }
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // Prevent click from propagating to the card
+        if (canBeDeleted) {
+            deletePropertyById(property.id);
+        }
     }
     
     return (
@@ -30,6 +41,16 @@ const PropertyCard = ({ property }) => {
                         <Bookmark className="w-5 h-5 text-white" />
                     }
                 </button>
+
+                {canBeDeleted && (
+                    <button
+                        onClick={handleDelete}
+                        className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-red-500 p-2 rounded-full shadow hover:bg-red-600"
+                        aria-label="Delete property"
+                    >
+                        <Trash2 className="w-5 h-5 text-white" />
+                    </button>
+                )}
             </div>
 
             {/* Price */}

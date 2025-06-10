@@ -1,10 +1,13 @@
 import {createContext, useCallback, useContext, useEffect, useMemo, useState} from "react";
+import useLocalStorage from "../hooks/useLocalStorage.jsx";
 
 const PropertyContext = createContext();
 
 export const PropertyProvider = ({ children }) => {
     const [properties, setProperties] = useState([]);
     const [loading, setLoading] = useState(true);
+
+    const [createdProperties, setCreatedProperties] = useLocalStorage("createdProperties", []); // For storing new properties added by the user
 
     // Filters & Sorting
     const [locationQuery, setLocationQuery] = useState("");
@@ -68,11 +71,21 @@ export const PropertyProvider = ({ children }) => {
         [properties]
     );
 
+    const deletePropertyById = useCallback(
+        (id) => {
+            setProperties((prev) => prev.filter((p) => p.id !== id));
+            setCreatedProperties((prev) => prev.filter((p) => p.id !== id));
+        },
+        [setProperties, setCreatedProperties]
+    );
+
     // memoize the value object so it only changes when one of its parts changes
     const contextValue = useMemo(() => ({
         loading,
         properties,
         filteredProperties,
+        createdProperties,
+        setCreatedProperties,
         locationQuery,
         setLocationQuery,
         sortBy,
@@ -82,17 +95,21 @@ export const PropertyProvider = ({ children }) => {
         areaRange,
         setAreaRange,
         getPropertyById,
+        deletePropertyById
     }), [
         loading,
         properties,
         filteredProperties,
+        createdProperties,
+        setCreatedProperties,
         locationQuery,
         sortBy,
         priceRange,
         areaRange,
         // setters from useState (setSearchQuery, etc.) are stable and
         // don’t need to go in the deps array, but including them is harmless
-        getPropertyById
+        getPropertyById,
+        deletePropertyById
     ]);
 
     return (
