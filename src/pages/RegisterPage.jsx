@@ -1,6 +1,7 @@
 import { useState} from "react";
 import { useAuth } from "../context/AuthProvider.jsx";
 import { NavLink } from "react-router-dom";
+import {trackMatomoEvent} from "../utils/trackMatomoEvent.js";
 
 const RegisterPage = () => {
     const { setUsers, login } = useAuth();
@@ -15,6 +16,13 @@ const RegisterPage = () => {
             alert("Pasahitzak ez dira berdinak");
             return;
         }
+
+        // Track the registration event with Matomo
+        trackMatomoEvent({
+            category: 'new_user',
+            action: 'register',
+            name: 'User Signed Up'
+        });
 
         const newUser = { username, password };
 

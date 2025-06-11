@@ -14,9 +14,12 @@ import PropertyDetailsPage from './pages/PropertyDetailsPage'
 import RegisterPage from "./pages/RegisterPage.jsx";
 import NewPropertyPage from "./pages/NewPropertyPage.jsx";
 import {useEffect} from "react";
+import MatomoPageViewTracker from "./components/MatomoPageViewTracker.jsx";
+import {useDocumentTitle} from "./hooks/useDocumentTitle.jsx";
 
 
 function App() {
+    useDocumentTitle();
 
     useEffect(() => {
 
@@ -32,6 +35,7 @@ function App() {
     return (
         <AuthProvider>
             <PropertyProvider>
+                <MatomoPageViewTracker />
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<HomePage />} />
