@@ -1,18 +1,21 @@
 import React, {useEffect, useState} from "react";
 import {useAuth} from "../context/AuthProvider.jsx";
-import {NavLink, useNavigate} from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
     const { user, login } = useAuth();
 
+    const location = useLocation();
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
-            navigate('/bilatzailea');
+            const from = location.state?.from?.pathname || '/';
+            navigate(from, { replace: true });
         }
     }, [user])
 
@@ -22,8 +25,7 @@ const LoginPage = () => {
         const credentials = {username: username, password: password};
 
         login(credentials)
-            .then(() => setError(''))
-            .catch(() => setError('Invalid username or password'));
+            .then(success => setError(!success));
 
     }
 
@@ -32,6 +34,13 @@ const LoginPage = () => {
             <h1 className="text-3xl font-semibold text-center">
                 Hasi Saioa
             </h1>
+            {error && (
+                <div className="flex mb-4 p-3 bg-red-100 text-red-800 rounded">
+                    <p className="flex-1">
+                        Erabiltzailea edo pasahitza okerra da. Saiatu berriro.
+                    </p>
+                </div>
+            )}
 
             <form onSubmit={handleLogin} className="space-y-5">
                 <div>

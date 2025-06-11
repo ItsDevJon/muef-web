@@ -1,11 +1,11 @@
 import { createContext, useContext } from 'react';
 import useLocalStorage from "../hooks/useLocalStorage.jsx";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const USERS = [
     {
         username: "jramos",
-        password: "jramos",
+        password: "G7r@p2qL!m",
         name: "Jon Ramos",
     },
 ];
@@ -18,39 +18,21 @@ export const AuthProvider = ({children}) => {
     const [users, setUsers] = useLocalStorage("users", USERS);
     const navigate = useNavigate();
 
+    const location = useLocation();
+
     // LoginPage logic
     const login = async (user) => {
 
         const { username, password } = user;
-
-        // try {
-        //
-        //     const res = await fetch('http://localhost:8080/auth/login', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Authorization': 'Basic ' + btoa(`${username}:${password}`),
-        //         },
-        //     });
-        //
-        //     if (!res.ok) return false;
-        //
-        //     const data = await res.text();
-        //
-        //     setUser({ ...user, role: data });
-        //
-        //     return true;
-        //
-        // } catch (error) {
-        //     console.error('Error during login:', error);
-        //     return false;
-        // }
-
-        // Replace this with actual authentication logic
         const foundUser = users.find(u => u.username === username && u.password === password);
+
         if (foundUser) {
             setUser(foundUser);
-            navigate(-1); // Redirect to the search page after login
+
+            const from = location.state?.from?.pathname || '/';
+
+            navigate(from, { replace: true });
+
             return true;
         }
 
@@ -64,7 +46,7 @@ export const AuthProvider = ({children}) => {
     }
 
     return (
-        <AuthContext.Provider value={{user, setUsers, login, logout}}>
+        <AuthContext.Provider value={{user, users, setUsers, login, logout}}>
             {children}
         </AuthContext.Provider>
     );
