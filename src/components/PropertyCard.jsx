@@ -58,12 +58,14 @@ const PropertyCard = ({ property, canBeDeleted = false }) => {
                 {property.price.toLocaleString()} € <span className="text-sm font-normal text-gray-500">/ hillero</span>
             </div>
 
-            {/* Location */}
+            {/* Title & Location */}
             <div className="flex flex-col gap-1">
                 <h4 className="text-xl font-medium">
-                    {property.location}
+                    {property.title}
                 </h4>
-                <span className="text-base text-[#6E6E6E] font-light">7 min oinez Deustuko Unibertsitatera</span>
+                <span className="text-base text-[#6E6E6E] font-light">
+                    {property.location}
+                </span>
             </div>
 
             {/* Features */}
